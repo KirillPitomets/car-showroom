@@ -1,0 +1,152 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 280px;
+  max-width: 340px;
+
+  overflow: hidden;
+  border-radius: 0.5rem;
+  border: 1px solid var(--border);
+  padding: 1rem;
+
+  transition: background 0.2s ease;
+
+  &:hover {
+    background-color: var(--accent-bg);
+  }
+
+  &__link {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    color: inherit;
+    text-decoration: none;
+  }
+
+  &__header {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  &__des {
+    width: 100%;
+    max-width: 150px;
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    font-size: 0.75rem;
+
+    color: var(--text);
+    opacity: 0.8;
+  }
+
+  &__sub-text {
+    font-size: 0.8rem;
+    color: var(--text);
+  }
+
+  &-img {
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    object-fit: cover;
+
+    margin: auto 0;
+  }
+
+  &__price {
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: var(--text-h);
+  }
+}
+
+.title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  &__title {
+    font-weight: bold;
+    color: var(--text-h);
+    margin: 0;
+
+    position: relative;
+    cursor: pointer;
+
+    transition: color 0.2s ease;
+
+    &:hover {
+      color: var(--accent);
+    }
+  }
+}
+
+.raiting {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+
+  &__number {
+    font-size: 0.9rem;
+    color: var(--text-h);
+  }
+}
+
+.tags {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 5px;
+
+  &__tag {
+    font-size: 0.75rem;
+    border: 1px solid var(--border);
+    padding: 0.2rem 0.6rem;
+    border-radius: 0.5rem;
+  }
+}
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: auto;
+  gap: 1rem;
+
+  padding-top: 1rem;
+}
+
+.price {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: var(--text-h);
+  text-align: right;
+
+  margin-bottom: 0.5rem;
+}
+
+.button {
+  width: 100%;
+  text-align: center;
+
+  padding: 0.5rem 0;
+
+  font-family: var(--sans);
+  font-weight: bold;
+  outline: none;
+  border: 1px solid var(--border);
+
+  background-color: var(--social-bg);
+  color: var(--text);
+  border-radius: 8px;
+  cursor: pointer;
+
+  transition: all 0.2s ease;
+
+  &:hover {
+    background-color: var(--accent-bg);
+  }
+}
