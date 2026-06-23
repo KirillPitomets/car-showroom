@@ -1,5 +1,5 @@
-import type { VehiclesResponse } from './vehicle.type';
-import { vehicleApi } from '../vehicleApi';
+import type { VehiclesResponse } from '../type/vehicle.type';
+import { vehicleApi } from '../../vehicleApi';
 
 export const fetchVehicles = async (): Promise<VehiclesResponse> => {
   const vehicles: VehiclesResponse = await vehicleApi
