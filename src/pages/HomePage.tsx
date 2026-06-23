@@ -1,24 +1,38 @@
 import cl from './HomePage.module.scss';
-import { fetchVehicles } from '../api/vehicles/fetchVehicles';
 import { VehicleList } from '../components/VehicleList';
-import { useQuery } from '@tanstack/react-query';
-import { type VehiclesResponse } from '../api/vehicles/vehicle.type';
 import { useVehicleFilters } from '../hooks/useVehicleFilters';
 import { Sidebar } from '../components/ui/sidebar/sidebar';
+import { useGetVehicles } from '../api/vehicles/query/useGetVehicles';
 
 export const HomePage = () => {
-  const { data: vehiclesData, isLoading } = useQuery<VehiclesResponse>({
-    queryKey: ['car-list'],
-    queryFn: fetchVehicles,
-  });
+  const { data: vehicleRes, isLoading } = useGetVehicles();
 
-  const { filteredVehicles, filters, setFilters } = useVehicleFilters(
-    vehiclesData?.products ?? []
-  );
+  const {
+    filteredVehicles,
+    filters,
+    priceRange,
+    brands,
+    handleBrand,
+    handleSearch,
+    handleMaxPrice,
+    handleMinPrice,
+    handleRating,
+    resetFilters,
+  } = useVehicleFilters(vehicleRes?.products);
 
   return (
     <div className={cl.wrapper}>
-      <Sidebar filters={filters} handleFilters={setFilters} />
+      <Sidebar
+        filters={filters}
+        handleSearch={handleSearch}
+        handleMaxPrice={handleMaxPrice}
+        handleMinPrice={handleMinPrice}
+        handleBrand={handleBrand}
+        handleRating={handleRating}
+        resetFilters={resetFilters}
+        priceRange={priceRange}
+        brands={brands}
+      />
 
       <VehicleList vehicles={filteredVehicles} isLoading={isLoading} />
     </div>
