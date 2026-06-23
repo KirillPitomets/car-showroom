@@ -7,8 +7,6 @@ interface Props {
   max: number;
   minVal: number;
   maxVal: number;
-  setMinVal: React.Dispatch<React.SetStateAction<number>>;
-  setMaxVal: React.Dispatch<React.SetStateAction<number>>;
   onChangeMinValue: (min: number) => void;
   onChangeMaxValue: (max: number) => void;
 }
@@ -18,8 +16,6 @@ export const DoubleRangeSlider: FC<Props> = ({
   max,
   minVal,
   maxVal,
-  setMinVal,
-  setMaxVal,
   onChangeMaxValue,
   onChangeMinValue,
 }) => {
@@ -34,14 +30,14 @@ export const DoubleRangeSlider: FC<Props> = ({
 
   const handleMinVal = (e: ChangeEvent<HTMLInputElement>) => {
     const value = Math.min(Number(e.target.value), maxVal - 1);
-    setMinVal(value);
+    onChangeMinValue(value);
     minValRef.current = value;
   };
 
   const handleMaxVal = (e: ChangeEvent<HTMLInputElement>) => {
     if (+e.target.value > max) return;
     const value = Math.max(Number(e.target.value), minVal + 1);
-    setMaxVal(value);
+    onChangeMaxValue(value);
     maxValRef.current = value;
   };
 
@@ -75,8 +71,8 @@ export const DoubleRangeSlider: FC<Props> = ({
 
   //  todo
   useEffect(() => {
-    setMinVal(min);
-    setMaxVal(max);
+    onChangeMinValue(min);
+    onChangeMaxValue(max);
 
     minValRef.current = min;
     maxValRef.current = max;

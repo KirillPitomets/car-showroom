@@ -1,32 +1,33 @@
 import cl from './PriceDoubleRangeSlider.module.scss';
-import { useState, type ChangeEvent, type FC } from 'react';
+import { type ChangeEvent, type FC } from 'react';
 import { DoubleRangeSlider } from '../DoubleRangeSlider/doubleRangeSlider';
 
 interface Props {
-  min: number;
-  max: number;
+  minRange: number;
+  maxRange: number;
+  minValue: number;
+  maxValue: number;
   handleMinPrice: (min: number) => void;
   handleMaxPrice: (max: number) => void;
 }
 
 export const PriceDoubleRangeSlider: FC<Props> = ({
-  min,
-  max,
+  minRange,
+  maxRange,
+  minValue,
+  maxValue,
   handleMaxPrice,
   handleMinPrice,
 }) => {
-  const [minVal, setMinVal] = useState(min);
-  const [maxVal, setMaxVal] = useState(max);
-
-  const handleMinVal = (e: ChangeEvent<HTMLInputElement>) => {
-    const value = Math.min(Number(e.target.value), maxVal - 1);
-    setMinVal(value);
+  const onChangeMinVal = (e: ChangeEvent<HTMLInputElement>) => {
+    const value = Math.min(Number(e.target.value), maxValue - 1);
+    handleMinPrice(value);
   };
 
-  const handleMaxVal = (e: ChangeEvent<HTMLInputElement>) => {
-    if (+e.target.value > max + 1) return;
-    const value = Math.max(Number(e.target.value), minVal + 1);
-    setMaxVal(value);
+  const onChangeMaxVal = (e: ChangeEvent<HTMLInputElement>) => {
+    if (+e.target.value > maxRange + 1) return;
+    const value = Math.max(Number(e.target.value), minValue + 1);
+    handleMaxPrice(value);
   };
 
   return (
@@ -38,10 +39,10 @@ export const PriceDoubleRangeSlider: FC<Props> = ({
             <span className={cl.value__currency}>$</span>
             <input
               type="number"
-              value={minVal}
-              min={min}
-              max={maxVal - 1}
-              onChange={handleMinVal}
+              value={minValue}
+              min={minRange}
+              max={maxValue - 1}
+              onChange={onChangeMinVal}
               className={cl.value__control}
             />
           </div>
@@ -55,10 +56,10 @@ export const PriceDoubleRangeSlider: FC<Props> = ({
             <span className={cl.value__currency}>$</span>
             <input
               type="number"
-              value={maxVal}
-              min={minVal + 1}
-              max={max}
-              onChange={handleMaxVal}
+              value={maxValue}
+              min={minValue + 1}
+              max={maxRange}
+              onChange={onChangeMaxVal}
               className={cl.value__control}
             />
           </div>
@@ -66,12 +67,10 @@ export const PriceDoubleRangeSlider: FC<Props> = ({
       </div>
 
       <DoubleRangeSlider
-        min={min}
-        max={max}
-        maxVal={maxVal}
-        minVal={minVal}
-        setMaxVal={setMaxVal}
-        setMinVal={setMinVal}
+        min={minRange}
+        max={maxRange}
+        maxVal={maxValue}
+        minVal={minValue}
         onChangeMinValue={handleMinPrice}
         onChangeMaxValue={handleMaxPrice}
       />

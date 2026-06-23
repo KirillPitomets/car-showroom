@@ -8,6 +8,7 @@ import { TagsList } from '../TagsList/TagsList';
 import { Star } from 'lucide-react';
 import { ButtonBase } from '../ButtonBase/ButtonBase';
 import { PriceDoubleRangeSlider } from '../PriceDoubleRangeSlider/PriceDoubleRangeSlider';
+import { StarRating } from '../StarRating.module.scss/StarRating';
 
 interface Props {
   filters: Filters;
@@ -46,8 +47,10 @@ export const Sidebar: FC<Props> = ({
       </button>
 
       <PriceDoubleRangeSlider
-        min={priceRange.min}
-        max={priceRange.max}
+        minRange={priceRange.min}
+        maxRange={priceRange.max}
+        minValue={filters.minPrice}
+        maxValue={filters.maxPrice}
         handleMaxPrice={handleMaxPrice}
         handleMinPrice={handleMinPrice}
       />
@@ -57,8 +60,7 @@ export const Sidebar: FC<Props> = ({
       <div>
         <div className={cl.value}>
           <label className={cl.value__container}>
-            <Star size={15} />
-            <span className={cl.value__currency}>{filters.minRating}</span>
+            <StarRating rating={filters.minRating} variable="outline" />
           </label>
         </div>
         <RangeSlider

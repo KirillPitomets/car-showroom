@@ -83,7 +83,12 @@ export const useVehicleFilters = (vehicles: Vehicle[] = []) => {
     }));
   };
 
-  const resetFilters = () => setFilters(initialFilters);
+  const resetFilters = () =>
+    setFilters({
+      ...initialFilters,
+      maxPrice: priceRange.max,
+      minPrice: priceRange.min,
+    });
 
   return {
     filteredVehicles,
