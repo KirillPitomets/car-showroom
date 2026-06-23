@@ -1,10 +1,12 @@
 import cl from './VehicleCard.module.scss';
 import type { FC } from 'react';
 import { NavLink } from 'react-router';
-import type { Vehicle } from '../../api/vehicles/vehicle.type';
+import type { Vehicle } from '../../api/vehicles/type/vehicle.type';
 import { buildVehiclePath } from '../../app/routes/routes.constants';
-import { Star } from 'lucide-react';
 import clsx from 'clsx';
+import { ButtonBase } from '../ui/ButtonBase/ButtonBase';
+import { StarRating } from '../ui/StarRating.module.scss/StarRating';
+import { TagsList } from '../ui/TagsList/TagsList';
 
 interface Props {
   vehicle: Vehicle;
@@ -22,12 +24,8 @@ export const VehicleCard: FC<Props> = ({ vehicle }) => {
             <h3 className={clsx([cl.title__title, 'hover-underline'])}>
               {vehicle.title}
             </h3>
-            <div className={cl.raiting}>
-              <Star size={14} fill="yellow" color="yellow" />
-              <span className={cl.raiting__number}>
-                {vehicle.rating.toFixed(1)}
-              </span>
-            </div>
+
+            <StarRating rating={vehicle.rating} />
           </div>
           <p className={cl.card__des}>{vehicle.description}</p>
         </div>
@@ -39,16 +37,10 @@ export const VehicleCard: FC<Props> = ({ vehicle }) => {
           onError={(e) => (e.currentTarget.src = 'imgs/placeholder-car.webp')}
         />
 
-        <ul className={cl.tags}>
-          {vehicle.tags.map((tag) => (
-            <li key={tag} className={cl.tags__tag}>
-              {tag}
-            </li>
-          ))}
-        </ul>
+        <TagsList tags={vehicle.tags} />
 
         <div className={cl.footer}>
-          <span className={cl.button}>See details</span>
+          <ButtonBase>See details</ButtonBase>
           <span className={cl.price}>${vehicle.price}</span>
         </div>
       </NavLink>

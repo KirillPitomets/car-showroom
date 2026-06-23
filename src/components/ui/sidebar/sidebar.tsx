@@ -1,37 +1,82 @@
 import cl from './sidebar.module.scss';
 import { SearchInput } from '../SearchInput/searchInput';
 import { type Filters } from '../../../hooks/useVehicleFilters';
-import { useState, type FC } from 'react';
+import { type FC } from 'react';
+import { RangeSlider } from '../RangeSlider/rangeSlide';
+import { Separate } from '../Separate/separate';
+import { TagsList } from '../TagsList/TagsList';
+import { Star } from 'lucide-react';
+import { ButtonBase } from '../ButtonBase/ButtonBase';
+import { PriceDoubleRangeSlider } from '../PriceDoubleRangeSlider/PriceDoubleRangeSlider';
 
 interface Props {
   filters: Filters;
-  handleFilters: (filters: Filters) => void;
+  priceRange: { min: number; max: number };
+  handleMinPrice: (min: number) => void;
+  handleMaxPrice: (max: number) => void;
+  handleSearch: (value: string) => void;
+  handleBrand: (brands: string) => void;
+  handleRating: (rating: number) => void;
+  resetFilters: () => void;
+  brands: string[];
+  isLoading?: boolean;
 }
 
-export const Sidebar: FC<Props> = ({ filters, handleFilters }) => {
-  const [value, setValue] = useState(0);
-  const [min, setMin] = useState(0);
-  const [max, setMax] = useState(100_000);
+export const Sidebar: FC<Props> = ({
+  filters,
+  priceRange,
+  brands,
+  handleSearch,
+  handleBrand,
+  handleMinPrice,
+  handleMaxPrice,
+  handleRating,
+  resetFilters,
+  isLoading,
+}) => {
+  if (isLoading) {
+    return <div>Loading</div>;
+  }
 
   return (
     <aside className={cl.sidebar}>
-      <SearchInput
-        value={filters.search}
-        handleValue={(value) => handleFilters({ ...filters, search: value })}
+      <SearchInput value={filters.search} onChange={handleSearch} />
+      <button onClick={resetFilters}>
+        <ButtonBase>RESET</ButtonBase>
+      </button>
+
+      <PriceDoubleRangeSlider
+        min={priceRange.min}
+        max={priceRange.max}
+        handleMaxPrice={handleMaxPrice}
+        handleMinPrice={handleMinPrice}
       />
-      <label>
-        <p>{value}</p>
-        <input type="number" onChange={(e) => setMin(+e.target.value)} />
-        <input type="number" onChange={(e) => setMax(+e.target.value)} />
-        <input
-          type="range"
-          min={min}
-          max={max}
-          // step={5_000}
-          value={value}
-          onChange={(e) => setValue(+e.target.value)}
+
+      <Separate />
+
+      <div>
+        <div className={cl.value}>
+          <label className={cl.value__container}>
+            <Star size={15} />
+            <span className={cl.value__currency}>{filters.minRating}</span>
+          </label>
+        </div>
+        <RangeSlider
+          max={5}
+          min={0}
+          value={filters.minRating}
+          onChange={(value) => handleRating(value)}
         />
-      </label>
+      </div>
+
+      <Separate />
+
+      <TagsList
+        tags={brands}
+        isInteractive
+        onClick={(brand) => handleBrand(brand)}
+        isActive={(brand) => filters.brands.includes(brand)}
+      />
     </aside>
   );
 };

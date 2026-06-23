@@ -1,0 +1,22 @@
+.button {
+  width: 100%;
+  text-align: center;
+
+  padding: 0.5rem 0;
+
+  font-family: var(--sans);
+  font-weight: bold;
+  outline: none;
+  border: 1px solid var(--border);
+
+  background-color: var(--social-bg);
+  color: var(--text);
+  border-radius: 8px;
+  cursor: pointer;
+
+  transition: all 0.2s ease;
+
+  &:hover {
+    background-color: var(--accent-bg);
+  }
+}

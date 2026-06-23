@@ -1,6 +1,6 @@
 import cl from './Vehicle.module.scss';
 import type { FC } from 'react';
-import type { Vehicle } from '../../api/vehicles/vehicle.type';
+import type { Vehicle } from '../../api/vehicles/type/vehicle.type';
 import { VehicleCard } from '../VehicleCard/VehicleCard';
 
 interface Props {
