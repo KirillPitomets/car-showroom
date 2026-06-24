@@ -11,7 +11,9 @@ interface Props {
 export const VehicleReviews: FC<Props> = ({ reviews }) => {
   return (
     <div className={cl.reviews}>
-      <ReviewForm />
+      <ReviewForm
+        onSubmit={(data) => console.log(`ECho from vehicle reviews: `, data)}
+      />
 
       {reviews.map((review, indx) => (
         <Review
