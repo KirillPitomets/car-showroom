@@ -26,7 +26,7 @@ export const Review: FC<Props> = ({ comment, date, rating, reviewer }) => {
 
       <div className={cl.review__main}>
         <p className={cl.review__comment}>{comment}</p>
-        <div>{new Date(date).toLocaleDateString()}</div>
+        <time>{new Date(date).toLocaleDateString()}</time>
       </div>
     </div>
   );

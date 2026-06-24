@@ -3,8 +3,8 @@ import { Logo } from '../../Logo/Logo';
 
 export const Header = () => {
   return (
-    <div className={cl.header}>
+    <header className={cl.header}>
       <Logo />
-    </div>
+    </header>
   );
 };

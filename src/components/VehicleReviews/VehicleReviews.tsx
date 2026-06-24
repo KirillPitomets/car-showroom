@@ -19,7 +19,7 @@ export const VehicleReviews: FC<Props> = ({ vehicleId, reviews }) => {
   };
 
   return (
-    <div className={cl.reviews}>
+    <section className={cl.reviews}>
       <ReviewForm onSubmit={onSubmit} />
 
       {reviews.map((review, indx) => (
@@ -34,6 +34,6 @@ export const VehicleReviews: FC<Props> = ({ vehicleId, reviews }) => {
           comment={review.comment}
         />
       ))}
-    </div>
+    </section>
   );
 };

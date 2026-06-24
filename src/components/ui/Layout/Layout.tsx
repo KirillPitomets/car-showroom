@@ -4,9 +4,9 @@ import { Header } from '../Header/Header';
 
 export const Layout: FC<PropsWithChildren> = ({ children }) => {
   return (
-    <div className={cl.container}>
+    <main className={cl.container}>
       <Header />
       {children}
-    </div>
+    </main>
   );
 };
