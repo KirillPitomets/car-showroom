@@ -11,7 +11,7 @@ export const ImageGallery: FC<Props> = ({ images, placeholder }) => {
   const [activeImgSrc, setActiveImgSrc] = useState(images.at(0));
 
   return (
-    <>
+    <div>
       <div className={cl.gallery}>
         <img
           className={cl.gallery__img}
@@ -42,6 +42,6 @@ export const ImageGallery: FC<Props> = ({ images, placeholder }) => {
           />
         ))}
       </div>
-    </>
+    </div>
   );
 };
