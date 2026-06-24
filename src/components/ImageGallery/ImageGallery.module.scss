@@ -1,0 +1,35 @@
+.gallery {
+  border-radius: 6px;
+  border: 1px solid var(--border);
+
+  &__img {
+    width: 100%;
+  }
+
+  &-imgs {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+
+    &__img {
+      width: 100%;
+      max-width: 150px;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      cursor: pointer;
+
+      transition:
+        background 0.2s ease,
+        border-color 0.2s ease;
+
+      &:hover {
+        border-color: var(--accent-bg);
+        background-color: var(--accent-bg);
+      }
+
+      &_active {
+        border: 1px solid var(--accent);
+      }
+    }
+  }
+}

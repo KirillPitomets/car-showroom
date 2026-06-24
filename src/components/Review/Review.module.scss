@@ -1,0 +1,29 @@
+.review {
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  padding: 1rem;
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+  }
+
+  &__rating {
+    border-radius: 6px;
+    border: 1px solid var(--border);
+    padding: 0.5rem;
+  }
+
+  &__comment {
+    color: var(--text-h);
+    border-left: 3px solid var(--accent);
+    padding-left: 12px;
+  }
+
+  &__main {
+    width: 100%;
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+  }
+}

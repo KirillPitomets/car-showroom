@@ -1,10 +1,9 @@
-.raiting {
+.rating {
   display: flex;
   align-items: center;
-  gap: 3px;
+  gap: 0.5rem;
 
   &__number {
     font-size: 0.9rem;
-    color: var(--text-h);
   }
 }

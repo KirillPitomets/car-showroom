@@ -1,0 +1,65 @@
+.root {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  cursor: pointer;
+
+  &_error .wrapper {
+    border-color: var(--error);
+  }
+}
+
+.label {
+  font-size: 0.9rem;
+  color: var(--text);
+}
+
+.wrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  transition:
+    border-color 0.15s ease,
+    box-shadow 0.15s ease;
+
+  &:hover {
+    border-color: var(--accent-border);
+  }
+
+  &:focus-within {
+    border-color: var(--accent);
+  }
+}
+
+.icon {
+  display: flex;
+  align-items: center;
+  color: var(--text);
+  flex-shrink: 0;
+}
+
+.textarea {
+  width: 100%;
+  font-size: 0.9rem;
+  line-height: 1.4;
+  color: var(--text-h);
+
+  resize: vertical;
+
+  &::placeholder {
+    color: var(--text);
+  }
+
+  &::-webkit-search-cancel-button {
+    display: none;
+  }
+}
+
+.error {
+  font-size: 0.75rem;
+  color: var(--error);
+}

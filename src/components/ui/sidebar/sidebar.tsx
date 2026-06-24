@@ -5,10 +5,10 @@ import { type FC } from 'react';
 import { RangeSlider } from '../RangeSlider/rangeSlide';
 import { Separate } from '../Separate/separate';
 import { TagsList } from '../TagsList/TagsList';
-import { Star } from 'lucide-react';
 import { ButtonBase } from '../ButtonBase/ButtonBase';
 import { PriceDoubleRangeSlider } from '../PriceDoubleRangeSlider/PriceDoubleRangeSlider';
 import { StarRating } from '../StarRating.module.scss/StarRating';
+import { StarRatingInput } from '../../StarRatingInput/StarRatingInput';
 
 interface Props {
   filters: Filters;
@@ -57,19 +57,11 @@ export const Sidebar: FC<Props> = ({
 
       <Separate />
 
-      <div>
-        <div className={cl.value}>
-          <label className={cl.value__container}>
-            <StarRating rating={filters.minRating} variable="outline" />
-          </label>
-        </div>
-        <RangeSlider
-          max={5}
-          min={0}
-          value={filters.minRating}
-          onChange={(value) => handleRating(value)}
-        />
-      </div>
+      <StarRatingInput
+        minRating={filters.minRating}
+        maxRating={5}
+        handleRating={handleRating}
+      />
 
       <Separate />
 

@@ -1,0 +1,32 @@
+.author {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+
+  margin-bottom: 1rem;
+
+  &__avatar {
+    width: 32px;
+    height: 32px;
+    border: 1px solid var(--border);
+    border-radius: 100%;
+    background-color: var(--border);
+    pointer-events: none;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    object-fit: cover;
+    object-position: center;
+
+    overflow: hidden;
+  }
+
+  &__name {
+    color: var(--text-h);
+  }
+  &__email {
+    font-size: 0.8rem;
+  }
+}

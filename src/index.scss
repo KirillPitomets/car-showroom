@@ -9,6 +9,8 @@
   --accent-border: rgba(170, 59, 255, 0.5);
   --social-bg: rgba(244, 243, 236, 0.5);
   --shadow: rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
+  --star: #ef9f27;
+  --error: #e24b4a;
 
   --sans: system-ui, "Segoe UI", Roboto, sans-serif;
   --heading: system-ui, "Segoe UI", Roboto, sans-serif;
@@ -146,4 +148,19 @@ button {
   outline: none;
   border: none;
   background-color: transparent;
+}
+
+input,
+textarea {
+  outline: none;
+  border: none;
+  background-color: transparent;
+}
+
+.color-green {
+  color: rgb(118, 253, 118);
+}
+
+.color-red {
+  color: red;
 }

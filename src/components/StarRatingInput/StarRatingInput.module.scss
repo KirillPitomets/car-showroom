@@ -1,0 +1,28 @@
+.stars {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.label {
+  font-size: 0.9rem;
+  color: var(--text);
+}
+
+.star {
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: var(--border);
+
+  transition:
+    color 0.12s,
+    transform 0.1s;
+
+  line-height: 1;
+  user-select: none;
+
+  &_active {
+    color: var(--star);
+    fill: var(--star);
+  }
+}

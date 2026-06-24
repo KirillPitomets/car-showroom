@@ -2,6 +2,7 @@ import { SearchIcon } from 'lucide-react';
 import cl from './searchInput.module.scss';
 
 import type { FC } from 'react';
+import { Input } from '../Input/Input';
 
 interface Props {
   value: string;
@@ -11,14 +12,10 @@ interface Props {
 export const SearchInput: FC<Props> = ({ onChange, value }) => {
   return (
     <div className={cl.wrapper} role="search">
-      <label htmlFor="vehicle-search" className={cl.visuallyHidden}>
-        Пошук автомобіля
-      </label>
-      <SearchIcon className={cl.icon} />
-      <input
+      <Input
+        icon={<SearchIcon size={17} />}
         id="vehicle-search"
         type="search"
-        className={cl.input}
         placeholder="Пошук за назвою..."
         value={value}
         onChange={(e) => onChange(e.target.value)}
