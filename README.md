@@ -1,73 +1,78 @@
-# React + TypeScript + Vite
+# Car Showroom
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A virtual car showroom SPA built with React and TypeScript. Browse vehicles, filter by brand, price and rating, and leave reviews.
 
-Currently, two official plugins are available:
+🔗 **[Live Demo](https://car-showroom-zeta.vercel.app/)**
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+---
 
-## React Compiler
+## Features
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- Vehicle catalog with cards and filtering by search, brand, price range and rating
+- Individual vehicle page with image gallery, specs and reviews
+- Review form with validation (react-hook-form + zod)
+- User reviews saved to localStorage and persisted across page reloads
+- Skeleton loaders and error/not-found states
+- Responsive layout from 420px to 1440px
 
-## Expanding the ESLint configuration
+## Tech Stack
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- **React 19** + **TypeScript**
+- **Vite** — build tool
+- **TanStack Query** — server state management
+- **Axios** — HTTP client
+- **react-hook-form** + **zod** — form validation
+- **SCSS Modules** — styling
+- **React Router v8** — routing
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## Getting Started
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+### Prerequisites
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+- Node.js 18+
+- npm or yarn
+
+### Installation
+
+```bash
+git clone https://github.com/KirillPitomets/car-showroom.git
+cd car-showroom
+npm install
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### Environment Variables
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+Create a `.env` file in the root:
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```env
+VITE_VEHICLE_API_URL=https://dummyjson.com/products/
+```
+
+### Run locally
+
+```bash
+npm run dev
+```
+
+Open [http://localhost:5173](http://localhost:5173)
+
+### Build
+
+```bash
+npm run build
+```
+
+## Project Structure
+
+```
+src/
+├── api/            # Axios instance, fetchers, TanStack Query hooks
+├── app/            # Router, providers
+├── components/     # Feature components (VehicleCard, ReviewForm, etc.)
+│   └── ui/         # Generic UI components (Button, Input, StarRating, etc.)
+├── hooks/          # Custom hooks
+├── pages/          # Page components
+├── schemes/        # Zod validation schemas
+├── styles/         # Global styles and variables
+└── utils/          # Utilities (localStorage, helpers)
 ```
