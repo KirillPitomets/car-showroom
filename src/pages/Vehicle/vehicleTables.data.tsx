@@ -1,5 +1,5 @@
 import type { Vehicle } from '../../api/vehicles/type/vehicle.type';
-import { StarRating } from '../../components/ui/StarRating.module.scss/StarRating';
+import { StarRating } from '../../components/ui/StarRating/StarRating';
 
 export const getVehicleTables = (vehicle: Vehicle) => [
   {

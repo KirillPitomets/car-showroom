@@ -1,7 +1,6 @@
 import cl from './ReviewForm.module.scss';
 import { Textarea } from '../ui/Textarea/Textarea';
 import { Input } from '../ui/Input/Input';
-import { ButtonBase } from '../ui/ButtonBase/ButtonBase';
 import { StarRatingInput } from '../StarRatingInput/StarRatingInput';
 import { Controller, useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -9,6 +8,7 @@ import {
   reviewFormSchema,
   type ReviewForm as ReviewFormType,
 } from '../../schemes/reviewForm.schema';
+import { Button } from '../ui/Button/Button';
 
 interface ReviewFormProps {
   onSubmit: (data: ReviewFormType) => void;
@@ -68,9 +68,9 @@ export const ReviewForm = ({ onSubmit }: ReviewFormProps) => {
           {...register('comment')}
         />
 
-        <button className={cl.btn} type="submit">
-          <ButtonBase>Submit review</ButtonBase>
-        </button>
+        <Button className={cl.btn} type="submit">
+          Submit review
+        </Button>
       </div>
     </form>
   );

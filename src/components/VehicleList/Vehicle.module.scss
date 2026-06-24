@@ -1,8 +1,7 @@
 .wrapper {
   width: 100%;
-  display: flex;
-  flex-wrap: wrap;
-
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(250px, 100%), 1fr));
   gap: 1.2rem;
 }
 

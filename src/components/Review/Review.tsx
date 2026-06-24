@@ -1,6 +1,6 @@
 import type { FC } from 'react';
 import { CommentAuthor } from '../CommentAuthor/CommentAuthor';
-import { StarRating } from '../ui/StarRating.module.scss/StarRating';
+import { StarRating } from '../ui/StarRating/StarRating';
 import cl from './Review.module.scss';
 
 interface Props {

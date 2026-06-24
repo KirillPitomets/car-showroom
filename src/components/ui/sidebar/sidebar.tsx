@@ -4,10 +4,10 @@ import { type Filters } from '../../../hooks/useVehicleFilters';
 import { type FC } from 'react';
 import { Separate } from '../Separate/separate';
 import { TagsList } from '../TagsList/TagsList';
-import { ButtonBase } from '../ButtonBase/ButtonBase';
 import { PriceDoubleRangeSlider } from '../PriceDoubleRangeSlider/PriceDoubleRangeSlider';
 import { StarRatingInput } from '../../StarRatingInput/StarRatingInput';
 import { SidebarSkeleton } from './Skeleton';
+import { Button } from '../Button/Button';
 
 interface Props {
   filters: Filters;
@@ -40,36 +40,36 @@ export const Sidebar: FC<Props> = ({
 
   return (
     <aside className={cl.sidebar}>
-      <SearchInput value={filters.search} onChange={handleSearch} />
-      <button onClick={resetFilters}>
-        <ButtonBase>RESET</ButtonBase>
-      </button>
+      <div className={cl.sidebar__wrapper}>
+        <SearchInput value={filters.search} onChange={handleSearch} />
+        <Button onClick={resetFilters}>RESET</Button>
 
-      <PriceDoubleRangeSlider
-        minRange={priceRange.min}
-        maxRange={priceRange.max}
-        minValue={filters.minPrice}
-        maxValue={filters.maxPrice}
-        handleMaxPrice={handleMaxPrice}
-        handleMinPrice={handleMinPrice}
-      />
+        <PriceDoubleRangeSlider
+          minRange={priceRange.min}
+          maxRange={priceRange.max}
+          minValue={filters.minPrice}
+          maxValue={filters.maxPrice}
+          handleMaxPrice={handleMaxPrice}
+          handleMinPrice={handleMinPrice}
+        />
 
-      <Separate />
+        <Separate />
 
-      <StarRatingInput
-        minRating={filters.minRating}
-        maxRating={5}
-        handleRating={handleRating}
-      />
+        <StarRatingInput
+          minRating={filters.minRating}
+          maxRating={5}
+          handleRating={handleRating}
+        />
 
-      <Separate />
+        <Separate />
 
-      <TagsList
-        tags={brands}
-        isInteractive
-        onClick={(brand) => handleBrand(brand)}
-        isActive={(brand) => filters.brands.includes(brand)}
-      />
+        <TagsList
+          tags={brands}
+          isInteractive
+          onClick={(brand) => handleBrand(brand)}
+          isActive={(brand) => filters.brands.includes(brand)}
+        />
+      </div>
     </aside>
   );
 };

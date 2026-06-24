@@ -62,15 +62,6 @@ export const DoubleRangeSlider: FC<Props> = ({
   }, [maxVal, min, max]);
 
   useEffect(() => {
-    onChangeMinValue?.(minVal);
-  }, [minVal]);
-
-  useEffect(() => {
-    onChangeMaxValue?.(maxVal);
-  }, [maxVal]);
-
-  //  todo
-  useEffect(() => {
     onChangeMinValue(min);
     onChangeMaxValue(max);
 

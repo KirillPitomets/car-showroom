@@ -4,9 +4,9 @@ import { NavLink } from 'react-router';
 import type { Vehicle } from '../../api/vehicles/type/vehicle.type';
 import { buildVehiclePath } from '../../app/routes/routes.constants';
 import clsx from 'clsx';
-import { ButtonBase } from '../ui/ButtonBase/ButtonBase';
-import { StarRating } from '../ui/StarRating.module.scss/StarRating';
+import { StarRating } from '../ui/StarRating/StarRating';
 import { TagsList } from '../ui/TagsList/TagsList';
+import { Button } from '../ui/Button/Button';
 
 interface Props {
   vehicle: Vehicle;
@@ -40,7 +40,7 @@ export const VehicleCard: FC<Props> = ({ vehicle }) => {
         <TagsList tags={vehicle.tags} />
 
         <div className={cl.footer}>
-          <ButtonBase>See details</ButtonBase>
+          <Button>See details</Button>
           <span className={cl.price}>${vehicle.price}</span>
         </div>
       </NavLink>

@@ -11,24 +11,11 @@ import { VehiclePageSkeleton } from './Skeleton';
 export const VehiclePage = () => {
   const { vehicleId } = useParams<{ vehicleId: string }>();
 
-  const {
-    data: vehicle,
-    isLoading,
-    error,
-    isError,
-  } = useGetVehicleById(vehicleId || '');
+  const { data: vehicle, isLoading } = useGetVehicleById(vehicleId || '');
 
   const reviews = useMargeVehicleReviews(vehicleId, vehicle);
 
-  if (isLoading) return <VehiclePageSkeleton />;
-
-  if (!vehicle || isError || !vehicleId)
-    return (
-      <div>
-        <h1>Vehicle not found :(</h1>
-        <p>{error?.message}</p>
-      </div>
-    );
+  if (isLoading || !vehicleId || !vehicle) return <VehiclePageSkeleton />;
 
   return (
     <div className={cl.container}>
