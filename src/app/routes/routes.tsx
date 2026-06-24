@@ -1,7 +1,7 @@
 import type { RouteObject } from 'react-router';
-import { HomePage } from '../../pages/HomePage';
-import { VehiclePage } from '../../pages/VehiclePage';
+import { VehiclePage } from '../../pages/Vehicle/VehiclePage';
 import { PATHS } from './routes.constants';
+import { HomePage } from '../../pages/Home/HomePage';
 
 export const routes: RouteObject[] = [
   {

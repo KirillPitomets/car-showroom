@@ -1,8 +1,8 @@
+import { useGetVehicles } from '../../api/vehicles/query/useGetVehicles';
+import { useVehicleFilters } from '../../hooks/useVehicleFilters';
 import cl from './HomePage.module.scss';
-import { VehicleList } from '../components/VehicleList';
-import { useVehicleFilters } from '../hooks/useVehicleFilters';
-import { Sidebar } from '../components/ui/sidebar/sidebar';
-import { useGetVehicles } from '../api/vehicles/query/useGetVehicles';
+import { VehicleList } from '../../components/VehicleList';
+import { Sidebar } from '../../components/ui/sidebar/sidebar';
 
 export const HomePage = () => {
   const { data: vehicleRes, isLoading } = useGetVehicles();
