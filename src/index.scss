@@ -12,9 +12,13 @@
   --star: #ef9f27;
   --error: #e24b4a;
 
+  --skeleton: #e5e4e7;
+
   --sans: system-ui, "Segoe UI", Roboto, sans-serif;
   --heading: system-ui, "Segoe UI", Roboto, sans-serif;
   --mono: ui-monospace, Consolas, monospace;
+
+  --animation-pulse: pulse 2s ease infinite;
 
   font: 18px/145% var(--sans);
   letter-spacing: 0.18px;
@@ -43,6 +47,7 @@
     --accent-border: rgba(192, 132, 252, 0.5);
     --social-bg: rgba(47, 48, 58, 0.5);
     --shadow: rgba(0, 0, 0, 0.4) 0 10px 15px -3px, rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
+    --skeleton: #2e303a;
   }
 
   #social .button-icon {
@@ -163,4 +168,10 @@ textarea {
 
 .color-red {
   color: red;
+}
+
+@keyframes pulse {
+  50% {
+    opacity: 0.5;
+  }
 }

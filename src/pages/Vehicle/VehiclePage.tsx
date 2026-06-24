@@ -5,19 +5,24 @@ import { RowTable } from '../../components/ui/RowTable/RowTable';
 import { ImageGallery } from '../../components/ImageGallery/ImageGallery';
 import { VehicleReviews } from '../../components/VehicleReviews/VehicleReviews';
 import { getVehicleTables } from './vehicleTables.data';
+import { useMargeVehicleReviews } from '../../hooks/useMargeVehicleReviews';
+import { VehiclePageSkeleton } from './Skeleton';
 
 export const VehiclePage = () => {
   const { vehicleId } = useParams<{ vehicleId: string }>();
+
   const {
     data: vehicle,
     isLoading,
     error,
     isError,
-  } = useGetVehicleById(vehicleId!);
+  } = useGetVehicleById(vehicleId || '');
 
-  if (isLoading) return <div>Loading...</div>;
+  const reviews = useMargeVehicleReviews(vehicleId, vehicle);
 
-  if (!vehicle || isError)
+  if (isLoading) return <VehiclePageSkeleton />;
+
+  if (!vehicle || isError || !vehicleId)
     return (
       <div>
         <h1>Vehicle not found :(</h1>
@@ -29,7 +34,7 @@ export const VehiclePage = () => {
     <div className={cl.container}>
       <div className={cl.block}>
         <ImageGallery images={vehicle.images} />
-        <VehicleReviews reviews={vehicle.reviews} />
+        <VehicleReviews vehicleId={vehicleId} reviews={reviews} />
       </div>
 
       <div className={cl.block}>

@@ -1,19 +1,26 @@
 import cl from './VehicleReviews.module.scss';
-import type { FC } from 'react';
+import { type FC } from 'react';
 import type { Review as ReviewType } from '../../api/vehicles/type/vehicle.type';
 import { Review } from '../Review/Review';
 import { ReviewForm } from '../ReviewForm/ReviewForm';
+import type { ReviewForm as ReviewFormType } from '../../schemes/reviewForm.schema';
+import { useCreateVehicleReview } from '../../hooks/useCreateVehicleReview';
 
 interface Props {
+  vehicleId: string;
   reviews: ReviewType[];
 }
 
-export const VehicleReviews: FC<Props> = ({ reviews }) => {
+export const VehicleReviews: FC<Props> = ({ vehicleId, reviews }) => {
+  const createVehicleReview = useCreateVehicleReview(vehicleId);
+
+  const onSubmit = (data: ReviewFormType) => {
+    createVehicleReview(data);
+  };
+
   return (
     <div className={cl.reviews}>
-      <ReviewForm
-        onSubmit={(data) => console.log(`ECho from vehicle reviews: `, data)}
-      />
+      <ReviewForm onSubmit={onSubmit} />
 
       {reviews.map((review, indx) => (
         <Review

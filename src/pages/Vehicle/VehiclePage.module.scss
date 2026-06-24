@@ -27,3 +27,23 @@
 
   gap: 1rem;
 }
+
+.skeleton {
+  width: 100%;
+  height: 370px;
+
+  background-color: var(--skeleton);
+  animation: var(--animation-pulse);
+
+  &_small {
+    height: 400px;
+  }
+
+  &_big {
+    height: 675px;
+  }
+
+  &_med {
+    height: 600px;
+  }
+}

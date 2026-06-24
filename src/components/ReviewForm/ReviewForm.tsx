@@ -5,10 +5,13 @@ import { ButtonBase } from '../ui/ButtonBase/ButtonBase';
 import { StarRatingInput } from '../StarRatingInput/StarRatingInput';
 import { Controller, useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { reviewFormSchema, type ReviewFormData } from './reviewForm.types';
+import {
+  reviewFormSchema,
+  type ReviewForm as ReviewFormType,
+} from '../../schemes/reviewForm.schema';
 
 interface ReviewFormProps {
-  onSubmit: (data: ReviewFormData) => void;
+  onSubmit: (data: ReviewFormType) => void;
 }
 
 export const ReviewForm = ({ onSubmit }: ReviewFormProps) => {
@@ -17,7 +20,7 @@ export const ReviewForm = ({ onSubmit }: ReviewFormProps) => {
     handleSubmit,
     formState: { errors },
     control,
-  } = useForm<ReviewFormData>({
+  } = useForm<ReviewFormType>({
     resolver: zodResolver(reviewFormSchema),
     defaultValues: {
       rating: 1,

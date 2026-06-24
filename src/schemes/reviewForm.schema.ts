@@ -33,4 +33,4 @@ export const reviewFormSchema = z.object({
     }),
 });
 
-export type ReviewFormData = z.infer<typeof reviewFormSchema>;
+export type ReviewForm = z.infer<typeof reviewFormSchema>;
