@@ -1,6 +1,6 @@
 import { useState, type FC } from 'react';
 import type { Filters } from '../../hooks/useVehicleFilters';
-import cl from './sidebar.module.scss';
+import cl from './Sidebar.module.scss';
 import { useScrollLock } from '../../hooks/useScrollLock';
 import { SidebarSkeleton } from './Skeleton';
 import { HamburgerButton } from '../ui/HamburgerButton/HamburgerButton';

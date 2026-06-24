@@ -1,5 +1,5 @@
 import clsx from 'clsx';
-import cl from './sidebar.module.scss';
+import cl from './Sidebar.module.scss';
 import { Separate } from '../ui/Separate/Separate';
 
 export const SidebarSkeleton = () => {
