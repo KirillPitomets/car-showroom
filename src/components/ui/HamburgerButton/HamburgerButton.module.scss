@@ -1,0 +1,41 @@
+@import "../../../styles/variables.scss";
+
+.hamburger {
+  width: 32px;
+  height: 20px;
+
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+
+  cursor: pointer;
+
+  @media (max-width: $sm-screen) {
+    display: flex;
+  }
+}
+
+.open {
+  & .bar:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+  }
+
+  & .bar:nth-child(2) {
+    opacity: 0;
+  }
+
+  & .bar:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+  }
+}
+
+.bar {
+  width: 100%;
+  height: 3px;
+
+  background-color: var(--text-h);
+
+  transition:
+    transform 0.2s ease,
+    opacity 0.2s ease;
+}
