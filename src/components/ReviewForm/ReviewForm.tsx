@@ -20,6 +20,7 @@ export const ReviewForm = ({ onSubmit }: ReviewFormProps) => {
     handleSubmit,
     formState: { errors },
     control,
+    reset,
   } = useForm<ReviewFormType>({
     resolver: zodResolver(reviewFormSchema),
     defaultValues: {
@@ -28,7 +29,13 @@ export const ReviewForm = ({ onSubmit }: ReviewFormProps) => {
   });
 
   return (
-    <form className={cl.form} onSubmit={handleSubmit(onSubmit)}>
+    <form
+      className={cl.form}
+      onSubmit={handleSubmit((data) => {
+        onSubmit(data);
+        reset();
+      })}
+    >
       <div className={cl.flex}>
         <div className={cl.field}>
           <Input
