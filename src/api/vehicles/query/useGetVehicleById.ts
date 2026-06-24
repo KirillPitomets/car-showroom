@@ -5,14 +5,7 @@ import { vehicleKeys } from '../vehicles.keys';
 export const useGetVehicleById = (vehicleId: string) => {
   return useQuery({
     queryKey: vehicleKeys.vehicleById(vehicleId),
-    queryFn: async () => {
-      const vehicle = await fetchVehicleById(vehicleId);
-
-      if (!vehicle) {
-        throw new Error('Vehicle not found');
-      }
-
-      return vehicle;
-    },
+    queryFn: () => fetchVehicleById(vehicleId),
+    enabled: !!vehicleId,
   });
 };
