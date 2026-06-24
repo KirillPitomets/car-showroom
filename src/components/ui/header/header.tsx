@@ -1,4 +1,4 @@
-import cl from './header.module.scss';
+import cl from './Header.module.scss';
 import { Logo } from '../../Logo/Logo';
 
 export const Header = () => {

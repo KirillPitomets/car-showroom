@@ -1,4 +1,4 @@
-import { Layout } from '../components/ui/layouts/layout';
+import { Layout } from '../components/ui/Layout/Layout';
 import { Providers } from './providers';
 import { MainRoutes } from './routes';
 

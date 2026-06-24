@@ -1,9 +1,8 @@
 import { useGetVehicles } from '../../api/vehicles/query/useGetVehicles';
 import { useVehicleFilters } from '../../hooks/useVehicleFilters';
 import cl from './HomePage.module.scss';
-import { Sidebar } from '../../components/ui/sidebar/sidebar';
 import { VehicleList } from '../../components/VehicleList/VehicleList';
-
+import { Sidebar } from '../../components/Sidebar/Sidebar';
 export const HomePage = () => {
   const { data: vehicleRes, isLoading, isError, refetch } = useGetVehicles();
 

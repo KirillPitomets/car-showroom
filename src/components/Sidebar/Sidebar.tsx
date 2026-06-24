@@ -1,16 +1,16 @@
+import { useState, type FC } from 'react';
+import type { Filters } from '../../hooks/useVehicleFilters';
 import cl from './sidebar.module.scss';
-import { SearchInput } from '../SearchInput/searchInput';
-import { type Filters } from '../../../hooks/useVehicleFilters';
-import { useEffect, useState, type FC } from 'react';
-import { Separate } from '../Separate/separate';
-import { TagsList } from '../TagsList/TagsList';
-import { PriceDoubleRangeSlider } from '../PriceDoubleRangeSlider/PriceDoubleRangeSlider';
-import { StarRatingInput } from '../../StarRatingInput/StarRatingInput';
+import { useScrollLock } from '../../hooks/useScrollLock';
 import { SidebarSkeleton } from './Skeleton';
-import { Button } from '../Button/Button';
-import { HamburgerButton } from '../HamburgerButton/HamburgerButton';
+import { HamburgerButton } from '../ui/HamburgerButton/HamburgerButton';
+import { SearchInput } from '../ui/SearchInput/SearchInput';
+import { Button } from '../ui/Button/Button';
 import clsx from 'clsx';
-import { useScrollLock } from '../../../hooks/useScrollLock';
+import { PriceDoubleRangeSlider } from '../ui/PriceDoubleRangeSlider/PriceDoubleRangeSlider';
+import { Separate } from '../ui/Separate/Separate';
+import { StarRatingInput } from '../StarRatingInput/StarRatingInput';
+import { TagsList } from '../ui/TagsList/TagsList';
 
 interface Props {
   filters: Filters;

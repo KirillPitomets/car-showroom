@@ -1,5 +1,5 @@
 import { SearchIcon } from 'lucide-react';
-import cl from './searchInput.module.scss';
+import cl from './SearchInput.module.scss';
 
 import type { FC } from 'react';
 import { Input } from '../Input/Input';

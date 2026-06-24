@@ -1,4 +1,4 @@
-import cl from './rangeSlider.module.scss';
+import cl from './RangeSlider.module.scss';
 
 import { type FC, type ChangeEvent, useEffect, useRef, useState } from 'react';
 
