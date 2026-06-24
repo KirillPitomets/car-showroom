@@ -1,10 +1,10 @@
 import cl from './header.module.scss';
-import { Nav } from '../nav';
+import { Logo } from '../../Logo/Logo';
 
 export const Header = () => {
   return (
     <div className={cl.header}>
-      <Nav />
+      <Logo />
     </div>
   );
 };
