@@ -2,13 +2,12 @@ import cl from './sidebar.module.scss';
 import { SearchInput } from '../SearchInput/searchInput';
 import { type Filters } from '../../../hooks/useVehicleFilters';
 import { type FC } from 'react';
-import { RangeSlider } from '../RangeSlider/rangeSlide';
 import { Separate } from '../Separate/separate';
 import { TagsList } from '../TagsList/TagsList';
 import { ButtonBase } from '../ButtonBase/ButtonBase';
 import { PriceDoubleRangeSlider } from '../PriceDoubleRangeSlider/PriceDoubleRangeSlider';
-import { StarRating } from '../StarRating.module.scss/StarRating';
 import { StarRatingInput } from '../../StarRatingInput/StarRatingInput';
+import { SidebarSkeleton } from './Skeleton';
 
 interface Props {
   filters: Filters;
@@ -36,7 +35,7 @@ export const Sidebar: FC<Props> = ({
   isLoading,
 }) => {
   if (isLoading) {
-    return <div>Loading</div>;
+    return <SidebarSkeleton />;
   }
 
   return (

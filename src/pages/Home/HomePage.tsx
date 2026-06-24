@@ -1,8 +1,8 @@
 import { useGetVehicles } from '../../api/vehicles/query/useGetVehicles';
 import { useVehicleFilters } from '../../hooks/useVehicleFilters';
 import cl from './HomePage.module.scss';
-import { VehicleList } from '../../components/VehicleList';
 import { Sidebar } from '../../components/ui/sidebar/sidebar';
+import { VehicleList } from '../../components/VehicleList/VehicleList';
 
 export const HomePage = () => {
   const { data: vehicleRes, isLoading } = useGetVehicles();
@@ -32,6 +32,7 @@ export const HomePage = () => {
         resetFilters={resetFilters}
         priceRange={priceRange}
         brands={brands}
+        isLoading={isLoading}
       />
 
       <VehicleList vehicles={filteredVehicles} isLoading={isLoading} />

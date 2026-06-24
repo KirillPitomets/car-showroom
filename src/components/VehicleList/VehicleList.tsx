@@ -2,6 +2,7 @@ import cl from './Vehicle.module.scss';
 import type { FC } from 'react';
 import type { Vehicle } from '../../api/vehicles/type/vehicle.type';
 import { VehicleCard } from '../VehicleCard/VehicleCard';
+import { VehicleListSkeleton } from './Skeleton';
 
 interface Props {
   isLoading: boolean;
@@ -9,22 +10,19 @@ interface Props {
 }
 
 export const VehicleList: FC<Props> = ({ isLoading, vehicles }) => {
-  // TODO - LOADER
   if (isLoading) {
-    return <div style={{ fontSize: '2rem', color: 'red' }}>Loading</div>;
+    return (
+      <div className={cl.wrapper}>
+        <VehicleListSkeleton length={5} />
+      </div>
+    );
   }
 
   return (
-    <div>
-      {!vehicles ? (
-        'No card :9'
-      ) : (
-        <div className={cl.wrapper}>
-          {vehicles.map((vehicle) => (
-            <VehicleCard key={vehicle.id} vehicle={vehicle} />
-          ))}
-        </div>
-      )}
+    <div className={cl.wrapper}>
+      {vehicles.map((vehicle) => (
+        <VehicleCard key={vehicle.id} vehicle={vehicle} />
+      ))}
     </div>
   );
 };
