@@ -1,8 +1,35 @@
-.container {
-  display: flex;
-  justify-content: space-between;
+@import "../../styles/variables.scss";
 
-  gap: 4rem;
+.container {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas:
+    "gallery  tables"
+    "reviews  tables";
+
+  @media (max-width: $md-screen) {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "gallery"
+      "tables"
+      "reviews";
+  }
+}
+
+.tables {
+  grid-area: tables;
+
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.gallery {
+  grid-area: gallery;
+}
+
+.reviews {
+  grid-area: reviews;
 }
 
 .header {

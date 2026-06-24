@@ -5,7 +5,7 @@ import { Sidebar } from '../../components/ui/sidebar/sidebar';
 import { VehicleList } from '../../components/VehicleList/VehicleList';
 
 export const HomePage = () => {
-  const { data: vehicleRes, isLoading } = useGetVehicles();
+  const { data: vehicleRes, isLoading, isError, refetch } = useGetVehicles();
 
   const {
     filteredVehicles,
@@ -35,7 +35,12 @@ export const HomePage = () => {
         isLoading={isLoading}
       />
 
-      <VehicleList vehicles={filteredVehicles} isLoading={isLoading} />
+      <VehicleList
+        vehicles={filteredVehicles}
+        isLoading={isLoading}
+        isError={isError}
+        onRetry={refetch}
+      />
     </div>
   );
 };
